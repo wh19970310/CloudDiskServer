@@ -11,7 +11,7 @@ import com.aliyuncs.profile.DefaultProfile;
 
 public class SendSms {
 
-    private DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI4Fz2B3eJ3zQdURpr5di7", "TcIEpD8vynDJpSyAcBmTdOz1iZQiSd");
+    private DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "yourAliCode", "yourAliCode");
     private IAcsClient client = new DefaultAcsClient(profile);
     private CommonRequest request = new CommonRequest();
     private String phoneNum;
@@ -21,13 +21,13 @@ public class SendSms {
 
         random = (int) (((Math.random() * 9) + 1) * 100000);
         request.setSysMethod(MethodType.POST);
-        request.setSysDomain("dysmsapi.aliyuncs.com");
+        request.setSysDomain("yourAliCode");
         request.setSysVersion("2017-05-25");
         request.setSysAction("SendSms");
         request.putQueryParameter("RegionId", "cn-hangzhou");
         request.putQueryParameter("PhoneNumbers", phoneNum);
-        request.putQueryParameter("SignName", "速云盘");
-        request.putQueryParameter("TemplateCode", "SMS_188990601");
+        request.putQueryParameter("SignName", "YourProjectName");
+        request.putQueryParameter("TemplateCode", "YourTemplete");
         request.putQueryParameter("TemplateParam", "{\"code\":\"" + random + "\"}");
         try {
             CommonResponse response = client.getCommonResponse(request);
